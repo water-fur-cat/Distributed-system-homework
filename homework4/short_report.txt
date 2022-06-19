@@ -1,0 +1,68 @@
+Part 1:
+    python cracker_service.py 7777
+    python client.py 7777 mpcsl 5
+        {"password": "mpcsl"}
+        {'time': '6.0076 secs'}
+    python client.py 7777 mpcs 4 
+        {"password": "mpcs"}
+        {'time': '0.2371 secs'}
+    python client.py 7777 mpcS 4
+        {"password": "mpcS"}
+        {'time': '23.7168 secs'}
+Part 2:
+    - First, I open two server by the command line 'python cracker_service.py 5000', 'python cracker_service.py 5001'
+    - We can see the requests coming in and show on the terminals. We can check the concurrency and 
+    see whether it indeed distributes workload across the connected services by the timestamp:
+        I enter the command line in a new terminals: 'python client.py 3 mpa 3'
+        And we can see in server one's terminals:
+        127.0.0.1 - - [02/May/2022 18:45:36] "GET /passwordcracker HTTP/1.1" 200 -
+        127.0.0.1 - - [02/May/2022 18:45:39] "GET /passwordcracker HTTP/1.1" 200 -
+        127.0.0.1 - - [02/May/2022 18:45:42] "GET /passwordcracker HTTP/1.1" 200 -
+        127.0.0.1 - - [02/May/2022 18:45:44] "GET /passwordcracker HTTP/1.1" 200 -
+        127.0.0.1 - - [02/May/2022 18:45:47] "GET /passwordcracker HTTP/1.1" 200 -
+        127.0.0.1 - - [02/May/2022 18:45:50] "GET /passwordcracker HTTP/1.1" 200 -
+        127.0.0.1 - - [02/May/2022 18:45:53] "GET /passwordcracker HTTP/1.1" 200 -
+        127.0.0.1 - - [02/May/2022 18:45:53] "GET /passwordcracker HTTP/1.1" 200 -
+        In server two's terminals:
+        127.0.0.1 - - [02/May/2022 18:45:36] "GET /passwordcracker HTTP/1.1" 200 -
+        127.0.0.1 - - [02/May/2022 18:45:39] "GET /passwordcracker HTTP/1.1" 200 -
+        127.0.0.1 - - [02/May/2022 18:45:42] "GET /passwordcracker HTTP/1.1" 200 -
+        127.0.0.1 - - [02/May/2022 18:45:44] "GET /passwordcracker HTTP/1.1" 200 -
+        127.0.0.1 - - [02/May/2022 18:45:47] "GET /passwordcracker HTTP/1.1" 200 -
+        127.0.0.1 - - [02/May/2022 18:45:50] "GET /passwordcracker HTTP/1.1" 200 -
+        127.0.0.1 - - [02/May/2022 18:45:53] "GET /passwordcracker HTTP/1.1" 200 -
+        127.0.0.1 - - [02/May/2022 18:45:55] "GET /passwordcracker HTTP/1.1" 200 -
+
+Part 3:
+    - I use ctrl + c to kill a server (or kill a thread) and it will generate a 
+    requests.exceptions.ConnectionError, then we just remove the thread that is assigned to that server 
+    and remove the port in the ports list. The remaining threads would continue searching and return a result.
+
+Part 4:
+    - python client.py 2 ma 3  
+        {"password": "ma"}
+        {'time': '0.8332 s'}
+    - python client.py 3 ma 3
+        {"password": "ma"}
+        {'time': '0.598 s'}
+    - python client.py 3 mpcs 4
+        {"password": "mpcs"}
+        {'time': '19.5851 s'}
+    - python client.py 2 mpcy 4
+        {"password": "mpcy"}
+        {'time': '29.2202 s'}
+    - Increasing the number of threads increases the performance, and the plot is at result.png
+
+Part 5:
+    - I use a dictionary to cache the hashed password in the server.
+    - To test:
+        first time: 
+            python client.py 2 mpcs 4
+                {"password": "mpcs"}
+                {'time': '28.6421 s'}
+        second time:
+            python client.py 2 mpcs 4
+                {"password": "mpcs"}
+                {'time': '0.1084 s'}
+
+

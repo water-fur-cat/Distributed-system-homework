@@ -1,0 +1,10 @@
+part 4:
+cd ..
+cd part4
+python mc_server.py 127.0.0.1 7777 7778
+python mc_client.py 127.0.0.1 7777 7778 ALL April
+python mc_client2.py 127.0.0.1 7777 7778 HW3 Heather
+then enter messages in their own client terminals
+
+To test if this multichannel was working properly, I set up three clients connected to the server.
+Each client is in different channels to post messages.
