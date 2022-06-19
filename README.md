@@ -1,13 +1,17 @@
 # Distributed-system-homework
 ## homework 1: 
-I create a map based application that will highlight Chicago landmarks.
+In this assignment, I create a client/server system that exchanges information between a single 
+client and a single server.  <br>
+The project is implemented in Python 3 and use the standard Python socket and pickle libraries.  <br>
+The project is organized in two parts. In the first part, I set up a client/server to exchange text 
+messages; in the second part I extend the client/server to exchange Python objects. 
 <br>
-The application make use of MapKit for displaying points of interest on the map and many Foundation classes for managing the data associated with each location and make use of adaptive layout techniques so that it can adjust to the users screen size and orientation. By using Adaptive Layouts, some of the views resize to take advantage of the different screen real estate.
-<br>
-It uses both Storyboards and programmatic interface design.
-<br>
-The heads up display contain two labels a star button. Toggle the star's appearance based on the selected state of the UIButton. It puts a prominent UIButton at the bottom of the screen. The button's title is "Favorite Places" and is floating on-top of the map. It annotates the map with points of interest in Chicago.
-<br>
+Functionality: 
+1. Client able to connect to server 
+2. Server able to receive message 
+3. Server able to respond to message 
+4. Method to serialize Python object 
+5. Client/server able to exchange Python objects <br>
 
 ## homework 2:
 
