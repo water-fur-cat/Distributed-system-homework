@@ -13,7 +13,7 @@ messages; in the second part I extend the client/server to exchange Python objec
 2. Server able to receive message 
 3. Server able to respond to message 
 4. Method to serialize Python object 
-5. Client/server able to exchange Python objects <br>
+5. Client/server able to exchange Python objects 
 
 ## homework 2:
 ### Description:
@@ -30,11 +30,14 @@ mnist/) in a Docker container. The code to train and use the model (using Tensor
 5. README conceptual questions (5 points per question)
 
 ## homework 3:
-When a user taps on a table cell the following sequence of events should happen: <br>
-1. The FavoritesViewController should send the information about the tapped cell to the MapViewController using a custom protocol and delegate. <br>
-2. The FavoritesViewController should dismiss itself.  <br>
-3. When the MapViewController appears, the map's region should animate to highlight the favorite place.  <br>
-4. The map view's HUD display view should should the information for the selected favorite place.  <br>
- 
+### Description:
+It is a Multi-user chat server. <br>
+In this homework assignment we implement a multi-user chat server using ZeroMQ. The purpose of this assignment is to reinforce students' understanding of different communication patterns. <br>
+The assignment includes four parts: first we will create a client/server pair for publishing messages to a chat channel; we will then create a pub/sub mechanism for displaying the contents of the channel; next we will integrate these two models to create an interactive, multi-user chat client and server; finally, we will create a multi-channel
+client and server using ZeroMQ topics to filter message. <br>
 
 ## homework 4：
+### Description:
+In this assignment we will create a distributed password cracking system. <br>
+we will implement the system as a REST service and develop a client that can distribute portions of the password search space to instances of the REST service. Each call should attempt to brute force crack the password by checking each combination of letters against the hashed password. <br>
+We will then enhance the service to improve fault tolerance and performance by caching previous attempts. <br>
